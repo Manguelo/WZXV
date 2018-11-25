@@ -390,7 +390,7 @@ class NowPlayingViewController: UIViewController {
     func stationDidChange() {
         radioPlayer.pause()
         
-        let item = AVPlayerItem(url: URL(string: "http://50.22.253.46/wzxv-fm")!)
+        let item = AVPlayerItem(url: URL(string: "http://ic2.christiannetcast.com/wzxv-fm")!)
         radioPlayer.replaceCurrentItem(with: item)
       /*DEPRICATED*/
 //        radioPlayer.contentURL = URL(string: "http://50.22.253.46/wzxv-fm")
