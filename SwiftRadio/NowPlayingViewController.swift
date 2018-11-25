@@ -93,14 +93,7 @@ class NowPlayingViewController: UIViewController {
         
         // Create Now Playing BarItem
         createNowPlayingAnimation()
-        
-        // Setup MPMoviePlayerController
-        // If you're building an app for a client, you may want to
-        // replace the MediaPlayer player with a more robust 
-        // streaming library/SDK. Preferably one that supports interruptions, etc.
-        // Most of the good streaming libaries are in Obj-C, however they
-        // will work nicely with this Swift code. There is a branch using RadioKit if 
-        // you need an example of how nicely this code integrates with libraries.
+      
         setupPlayer()
         
         // Notification for when app becomes active
@@ -108,14 +101,7 @@ class NowPlayingViewController: UIViewController {
             selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
             name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
             object: nil)
-        
-        // Notification for MediaPlayer metadata updated
-//        NotificationCenter.default.addObserver(self,
-//            //selector: #selector(NowPlayingViewController.metadataUpdated),
-//            name: Notification.Name.MPMoviePlayerTimedMetadataUpdated,
-//            object: nil)
-        
-        // Notification for AVAudioSession Interruption (e.g. Phone call)
+      
         NotificationCenter.default.addObserver(self,
             selector: #selector(NowPlayingViewController.sessionInterrupted),
             name: Notification.Name.AVAudioSessionInterruption,
@@ -182,16 +168,12 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func websiteButton(_ sender: Any) {
-//        menuShowing = true
-//        updateMenuIfNeeded()
         if let url = URL(string: "https://wzxv.org") {
             UIApplication.shared.openURL(url)
         }
     }
     
     @IBAction func instagramButton(_ sender: Any) {
-//        menuShowing = true
-//        updateMenuIfNeeded()
         if let url = URL(string: "https://www.instagram.com/wzxvtheword") {
             UIApplication.shared.openURL(url)
         }
@@ -206,12 +188,9 @@ class NowPlayingViewController: UIViewController {
         
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
-        //let seconds = calendar.component(.second, from: date)
-        //let time = hour
         let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "ccc"
         let dayOfWeekString = dateFormatter.string(from: date)
-            //print(dayOfWeekString)
         if dayOfWeekString == "Sat" || dayOfWeekString == "Sun"{
                 artistLabel.text = "The Word"
                 songLabel.text = "WZXV"
@@ -762,72 +741,7 @@ class NowPlayingViewController: UIViewController {
             }
         }
     }
-    
-    //*****************************************************************
-    // MARK: - MetaData Updated Notification
-    //*****************************************************************
-//    @objc func metadataUpdated(n: NSNotification)
-//    {
-//        if(radioPlayer.timedMetadata != nil && radioPlayer.timedMetadata.count > 0)
-//        {
-//            startNowPlayingAnimation()
-//
-//            let firstMeta: MPTimedMetadata = radioPlayer.timedMetadata.first as! MPTimedMetadata
-//            let metaData = firstMeta.value as! String
-//
-//            var stringParts = [String]()
-//            if metaData.range(of: " - ") != nil {
-//                stringParts = metaData.components(separatedBy: " - ")
-//            } else {
-//                stringParts = metaData.components(separatedBy: "-")
-//            }
-//
-//            // Set artist & songvariables
-//            let currentSongName = track.title
-//            track.artist = stringParts[0]
-//            track.title = stringParts[0]
-//
-//            if stringParts.count > 1 {
-//                track.title = stringParts[1]
-//            }
-//
-//            if track.artist == "" && track.title == "" {
-//                track.artist = currentStation.stationDesc
-//                track.title = currentStation.stationName
-//            }
-//
-//            DispatchQueue.main.async(execute: {
-//
-//                if currentSongName != self.track.title {
-//
-//                    if kDebugLog {
-//                        print("METADATA artist: \(self.track.artist) | title: \(self.track.title)")
-//                    }
-//
-//                    // Update Labels
-//                    self.artistLabel.text = self.track.artist
-//                    self.songLabel.text = self.track.title
-//                    self.updateUserActivityState(self.userActivity!)
-//
-//                    // songLabel animation
-//                    self.songLabel.animation = "zoomIn"
-//                    self.songLabel.duration = 1.5
-//                    self.songLabel.damping = 1
-//                    self.songLabel.animate()
-//
-//                    // Update Stations Screen
-//                    self.delegate?.songMetaDataDidUpdate(track: self.track)
-//
-//                    // Query API for album art
-//                    self.resetAlbumArtwork()
-//                    self.queryAlbumArt()
-//                    self.updateLockScreen()
-//
-//                }
-//            })
-//        }
-//    }
-    
+  
     //*****************************************************************
     // MARK: - AVAudio Sesssion Interrupted
     //*****************************************************************
