@@ -392,9 +392,6 @@ class NowPlayingViewController: UIViewController {
         
         let item = AVPlayerItem(url: URL(string: "http://ic2.christiannetcast.com/wzxv-fm")!)
         radioPlayer.replaceCurrentItem(with: item)
-      /*DEPRICATED*/
-//        radioPlayer.contentURL = URL(string: "http://50.22.253.46/wzxv-fm")
-//        radioPlayer.prepareToPlay()
         playPressed()
         
         if radioIsLoading == true{
@@ -402,9 +399,7 @@ class NowPlayingViewController: UIViewController {
             songLabel.repeatCount = Float.infinity
             songLabel.animate()
         }
-        //updateLabels(statusMessage: "Loading Station...")
-        
-        // songLabel animate
+      
         updateLabels(statusMessage: "WZXV - The Word")
         resetAlbumArtwork()
         
@@ -420,7 +415,6 @@ class NowPlayingViewController: UIViewController {
         playingRadio = true
         playButtonEnable(enabled: false)
         radioPlayer.play()
-        //updateLabels(statusMessage: "Playing")
         
         if radioIsLoading == true{
             songLabel.animation = "flash"

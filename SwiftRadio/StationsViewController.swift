@@ -327,9 +327,6 @@ extension StationsViewController: UISearchResultsUpdating {
     
         // Set the searchedStations with search result array
         searchedStations = array as! [RadioStation]
-    
-        // Reload the tableView
-        //self.tableView.reloadData()
     }
     
 }
