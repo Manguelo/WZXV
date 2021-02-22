@@ -38,9 +38,9 @@ class StationsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        InstaButton.isHidden = true
+        FacebookButton.isHidden = true
         if UIDevice.current.userInterfaceIdiom == .pad{
-           InstaButton.isHidden = true
-           FacebookButton.isHidden = true
            WebButton.isHidden = true
            TwitterButton.isHidden = true
            IPadButtonView.isHidden = false

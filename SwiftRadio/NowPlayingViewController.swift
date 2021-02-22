@@ -35,7 +35,6 @@ class NowPlayingViewController: UIViewController {
     @IBOutlet weak var stationDescLabel: UILabel!
     @IBOutlet weak var volumeParentView: UIView!
     @IBOutlet weak var slider = UISlider()
-    @IBOutlet weak var IPadButtonView: UIView!
     
     var currentStation: RadioStation!
     var downloadTask: URLSessionDownloadTask?
@@ -55,11 +54,6 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     override func viewDidLoad() {
-        if UIDevice.current.userInterfaceIdiom == .pad{
-            IPadButtonView.isHidden = false
-            IPadButtonView.layer.zPosition = 1
-        }
-        
         /* schedule START */
        
         //in case the array isn't filled to 97 (error with schedule on Google Drive)
